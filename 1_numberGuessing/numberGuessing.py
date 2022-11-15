@@ -47,7 +47,7 @@ def main():
             print("The correct ans is smaller than your guess.")
         guessReqd += 1
     print("You've guessed the correct number which is:", ans)
-    print(f"You took %{guessReqd} guesses.")
+    print(f"You took {guessReqd} guesses.")
 
 if __name__ == "__main__":
     main()
