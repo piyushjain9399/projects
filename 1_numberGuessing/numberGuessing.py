@@ -16,4 +16,9 @@ def generateRandom():
     randNum = random.randInt(1,100)
     return randNum
 
-
+def getInput():
+    """
+    Function to take guess int input from user
+    """
+    guess = int(input("Make a guess between 1 to 100: "))
+    return guess
