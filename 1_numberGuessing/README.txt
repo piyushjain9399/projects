@@ -12,4 +12,4 @@ in a highScore.txt file in the same directory. This feature currently works only
 Unix based OS (because of the '/' based file directory structure).
 
 V2.1:
-Making the highScore functionality working for Windows based systems as well. (Untested)
+Making the highScore functionality working for Windows based systems as well. 
