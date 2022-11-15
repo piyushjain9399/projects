@@ -11,13 +11,16 @@
 #           3. Once the user guesses the number, print out the number of attempts taken.
 
 
-# V2    ->  Adding the feature to store high scores. 
+# V2    ->  Adding the feature to store high scores. (Only for Unix based systems) 
 #           i.e. writing the high score to a file stored in the same directory and updating the score
 #           if the current score beats the high score.
+
+# V2.1  ->  Adding the highScore functionality to Windows based systems.
 
 # 0. Importing reqd libraries.
 import random
 import os
+from sys import platform
 
 # 1. Generating random number
 def generateRandom():
@@ -38,7 +41,10 @@ def getInput():
 # Function to check if highScore.txt file exists
 def checkHighScoreFile():
     path = os.getcwd()
-    path += "/highScore.txt"
+    if platform == "win32" or platform == "win64":
+        path += "\\highScore.txt"
+    else:
+        path += "/highScore.txt"
     isFile = os.path.isfile(path)
     return isFile
 
@@ -69,7 +75,7 @@ def main():
         file1 = open(r"highScore.txt", "r")
         highScore = int(file1.read())
         
-        # TODO: Updating the highScore.txt with the better highScore.
+        # Updating the highScore.txt with the better highScore.
         if guessReqd < highScore:
             file1.close()
             file1 = open(r"highScore.txt", "w")
