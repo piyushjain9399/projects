@@ -71,7 +71,9 @@ def main():
         
         # TODO: Updating the highScore.txt with the better highScore.
         if guessReqd < highScore:
-
+            file1.close()
+            file1 = open(r"highScore.txt", "w")
+            file1.write(str(guessReqd))
             print(f"Congratulations! You have set up a new highScore with {guessReqd} guesses")
 
         else:
