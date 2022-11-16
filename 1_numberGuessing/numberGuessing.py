@@ -30,6 +30,7 @@
 # V3.2  ->  1. Correcting userInput function to take valid input only.
 #           2. Correcting the counting of guesses. 
 
+# V3.3	->  Putting the hardcoded filenames, etc into functions wherever possible.
 
 # 0. Importing reqd libraries.
 import random

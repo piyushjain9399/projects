@@ -28,3 +28,6 @@ Making different highScore.txt file based on the range selected:
 V3.2:
 Correcting userInput function to take valid input only
 Correcting the guessesReqd counting
+
+V3.3:
+Putting the hardcoded fileNames into functions wherever possible.
