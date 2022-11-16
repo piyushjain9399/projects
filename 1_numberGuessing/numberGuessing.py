@@ -58,15 +58,19 @@ def getInput(choice):
     return guess
 
 # Function to check if highScore.txt file exists
-def checkHighScoreFile():
+def checkHighScoreFile(choice):
     """
     Checks the pre-existence of highScore.txt file in the same directory
     """
     path = os.getcwd()
     if platform == "win32" or platform == "win64":
-        path += "\\highScore.txt"
+        path += "\\highScore"
     else:
-        path += "/highScore.txt"
+        path += "/highScore"
+    if choice == 1:
+        path += "1To100.txt"
+    else:
+        path += "1To200.txt"
     isFile = os.path.isfile(path)
     return isFile
 
@@ -102,23 +106,34 @@ def main():
     print("You've guessed the correct number which is:", ans)
     print(f"You took {guessReqd} guesses.")
     
-    highScoreFileExists = checkHighScoreFile()
+    highScoreFileExists = checkHighScoreFile(choice)
 
     if highScoreFileExists:
-        file1 = open(r"highScore.txt", "r")
+        # Checking if user score beats current score:
+        if choice == 1:
+            file1 = open(r"highScore1To100.txt", "r")
+        else:
+            file1 = open(r"highScore1To200.txt", "r")
         highScore = int(file1.read())
         
         # Updating the highScore.txt with the better highScore.
         if guessReqd < highScore:
             file1.close()
-            file1 = open(r"highScore.txt", "w")
+            if choice == 1:
+                file1 = open(r"highScore1To100.txt", "w")
+            else:
+                file1 = open(r"highScore1To200.txt", "w")
             file1.write(str(guessReqd))
             print(f"Congratulations! You have set up a new highScore with {guessReqd} guesses")
 
         else:
             print("The highscore is:", highScore)
     else:
-        file1 = open(r"highScore.txt", "w")
+        # Making the highScore file with correct filename based on the range:
+        if choice == 1:
+            file1 = open(r"highScore1To100.txt", "w")
+        else:
+            file1 = open(r"highScore1To200.txt", "w")
         file1.write(str(guessReqd))
         print("Congratulations! You have set up a new highScore!")
 
