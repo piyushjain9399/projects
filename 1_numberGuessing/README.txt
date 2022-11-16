@@ -19,3 +19,8 @@ Adding a function to select the range of the guessing range between:
 1. 1 to 100
 2. 1 to 200
 
+V3.1:
+Making different highScore.txt file based on the range selected:
+1. For 1 to 100 -> highScore1To100.txt
+2. For 1 to 200 -> highScore1To200.txt
+
