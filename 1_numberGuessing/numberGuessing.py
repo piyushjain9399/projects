@@ -28,23 +28,34 @@ import os
 from sys import platform
 
 # 1. Generating random number
-def generateRandom():
+def generateRandom(choice):
     """
-    Function to generate and return a random integer from 1 to 100
+    Function to generate and return a random integer from 1-100 and 1-200
+    based on the user range input
     """
-    randNum = random.randint(1,100)
+    if choice==1:
+        randNum = random.randint(1,100)
+    else:
+        randNum = random.randint(1,200)
     return randNum
 
 # Taking input from user
-def getInput():
+def getInput(choice):
     """
-    Function to take guess int input from user
+    Function to take guess int input from user based on the range choice
+    made by the user
     """
-    guess = int(input("Make a guess between 1 to 100: "))
+    if choice == 1:
+        guess = int(input("Make a guess between 1 to 100: "))
+    else:
+        guess = int(input("Make a guess between 1 to 200: "))
     return guess
 
 # Function to check if highScore.txt file exists
 def checkHighScoreFile():
+    """
+    Checks the pre-existence of highScore.txt file in the same directory
+    """
     path = os.getcwd()
     if platform == "win32" or platform == "win64":
         path += "\\highScore.txt"
@@ -53,17 +64,28 @@ def checkHighScoreFile():
     isFile = os.path.isfile(path)
     return isFile
 
+# V3 Change: Getting range choice from the user:
+def getRange():
+    """
+    Function to take the range choice between 1-100 and 1-200 from the user
+    """
+    choice = int(input("Please input 1 if range choice is 1-100 and 2 if range choice is 1-200:"))
+    while (choice != 1 and choice != 2):
+        print("Please input 1 or 2 only. Try again.")
+        choice = getRange()
+    return choice
 
 # Defining the main function and writing the call for it.
 def main():
     """
     The driver function.
     """
+    choice = getRange()
     guessReqd = 0
     guess = 0
-    ans = generateRandom()
+    ans = generateRandom(choice)
     while (guess != ans):
-        guess = getInput()
+        guess = getInput(choice)
         if guess == ans:
             break
         elif guess < ans:
