@@ -14,6 +14,7 @@ Unix based OS (because of the '/' based file directory structure).
 V2.1:
 Making the highScore functionality working for Windows based systems as well. 
 
+
 V3:
 Adding a function to select the range of the guessing range between:
 1. 1 to 100
@@ -24,3 +25,6 @@ Making different highScore.txt file based on the range selected:
 1. For 1 to 100 -> highScore1To100.txt
 2. For 1 to 200 -> highScore1To200.txt
 
+V3.2:
+Correcting userInput function to take valid input only
+Correcting the guessesReqd counting

@@ -22,10 +22,13 @@
 #           1. 1 to 100
 #           2. 1 to 200
 
-
 # V3.1  ->  Making different highScore.txt file based on the range selected:
 #           1. For 1 to 100 -> highScore1To100.txt
 #           2. For 1 to 200 -> highScore1To200.txt
+
+
+# V3.2  ->  1. Correcting userInput function to take valid input only.
+#           2. Correcting the counting of guesses. 
 
 
 # 0. Importing reqd libraries.
@@ -53,8 +56,14 @@ def getInput(choice):
     """
     if choice == 1:
         guess = int(input("Make a guess between 1 to 100: "))
+        if (guess>100 or guess<1):
+            print("Please make a choice between 1 to 100 only. Try again!")
+            guess = getInput(choice)
     else:
         guess = int(input("Make a guess between 1 to 200: "))
+        if (guess>200 or guess<1):
+            print("Please make a choice between 1 to 200 only. Try again!")
+            guess = getInput(choice)
     return guess
 
 # Function to check if highScore.txt file exists
@@ -104,6 +113,8 @@ def main():
             print("The correct ans is smaller than your guess.")
         guessReqd += 1
     print("You've guessed the correct number which is:", ans)
+    # Increasing the guessReqd to compensate for the last correct guess which is not counted.
+    guessReqd += 1
     print(f"You took {guessReqd} guesses.")
     
     highScoreFileExists = checkHighScoreFile(choice)
