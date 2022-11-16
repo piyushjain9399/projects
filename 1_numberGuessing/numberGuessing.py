@@ -17,6 +17,11 @@
 
 # V2.1  ->  Adding the highScore functionality to Windows based systems.
 
+
+# V3    ->  Adding a function to select the range of the guessing range between:
+#           1. 1 to 100
+#           2. 1 to 200
+
 # 0. Importing reqd libraries.
 import random
 import os

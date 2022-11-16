@@ -13,3 +13,9 @@ Unix based OS (because of the '/' based file directory structure).
 
 V2.1:
 Making the highScore functionality working for Windows based systems as well. 
+
+V3:
+Adding a function to select the range of the guessing range between:
+1. 1 to 100
+2. 1 to 200
+
