@@ -10,6 +10,7 @@
 #               or less then their guess and storing the number of attempts the user is making.
 #           3. Once the user guesses the number, print out the number of attempts taken.
 
+# ----	-----	-----	-----
 
 # V2    ->  Adding the feature to store high scores. (Only for Unix based systems)
 #           i.e. writing the high score to a file stored in the same directory and updating the score
@@ -17,6 +18,7 @@
 
 # V2.1  ->  Adding the highScore functionality to Windows based systems.
 
+# ----	-----	-----	-----
 
 # V3    ->  Adding a function to select the range of the guessing range between:
 #           1. 1 to 100
@@ -31,6 +33,10 @@
 #           2. Correcting the counting of guesses.
 
 # V3.3	->  Putting the hardcoded filenames, etc into functions wherever possible.
+
+# V3.4 	->	Utilizing decorator functions for i/o functions to reduce code redundancy.
+
+# ----	-----	-----	-----
 
 # 0. Importing reqd libraries.
 import random
