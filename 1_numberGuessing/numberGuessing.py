@@ -43,9 +43,11 @@ import random
 import os
 from sys import platform
 
+# Defining Global Variables: (The file handler)
+
+file1 = "FileHandlerGlobalVar"
+
 # 1. Generating random number
-
-
 def generateRandom(choice):
     """
     Function to generate and return a random integer from 1-100 and 1-200
@@ -58,8 +60,6 @@ def generateRandom(choice):
     return randNum
 
 # Taking input from user
-
-
 def getInput(choice):
     """
     Function to take guess int input from user based on the range choice
@@ -110,31 +110,42 @@ def getRange():
         choice = getRange()
     return choice
 
-# V3.3 Changes below:
+# V3.3, V3.4 Changes below:
 
+#decorator function for reducing fileIO code redundancy:
+def fileIO(func):
+    """
+    Decorator function that takes care of the IO part.
+    """
+    def inner(*args):
+        global file1
+        if(args[0] == 1):
+            file1 = open(r"highScore1To100.txt","a+")
+        else:
+            file1 = open(r"highScore1To200.txt","a+")
+        return func(*args)
+    return inner
 
+@fileIO
 def getHighScore(choice):
     """
     Function to get the highScore based on user range choice.
     """
-    if choice == 1:
-        file1 = open(r"highScore1To100.txt", "r")
-    else:
-        file1 = open(r"highScore1To200.txt", "r")
+   # print("File1.type: ", file1.type())
+    global file1
+    file1.seek(0)
     highScore = int(file1.read())
     return highScore
 
-
+@fileIO
 def updateHighScore(choice, guessReqd):
     """
     Function to write to the highScore file based on user range choice.
     """
-    if choice == 1:
-        file1 = open(r"highScore1To100.txt", "w")
-    else:
-        file1 = open(r"highScore1To200.txt", "w")
+    global file1
+    file1.seek(0)
     file1.write(str(guessReqd))
-    print(f"Congratulations! You have set up a new highScore with {guessReqd} guesses")
+    print(f"Congratulations! You have set up a new highScore with {guessReqd} guesses.")
 
 # Defining the main function and writing the call for it.
 
@@ -166,9 +177,10 @@ def main():
     if highScoreFileExists:
         # Checking if user score beats current score:
         highScore = getHighScore(choice)
-
         if guessReqd > highScore:
             print(f"The highScore is: {highScore}")
+        else:
+            updateHighScore(choice, guessReqd)
     else:
         updateHighScore(choice, guessReqd)
 

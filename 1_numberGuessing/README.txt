@@ -34,3 +34,10 @@ Putting the hardcoded fileNames into functions wherever possible.
 
 V3.4:
 Using decorators over the functions for file i/o to avoid redundancy
+
+----
+Ideas to work on:
+[] Error Handling
+    [] While checking user input at each guess
+[] User generated Range
+[] UI of some kind if possible
