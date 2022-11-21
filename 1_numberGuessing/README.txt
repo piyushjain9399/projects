@@ -37,6 +37,8 @@ Using decorators over the functions for file i/o to avoid redundancy
 
 ----
 Ideas to work on:
+[] The current highScore files are not overwriting the previous scores 
+    but are appending to the previous entry. Sort it.
 [] Error Handling
     [] While checking user input at each guess
 [] User generated Range
