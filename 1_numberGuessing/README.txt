@@ -35,11 +35,13 @@ Putting the hardcoded fileNames into functions wherever possible.
 V3.4:
 Using decorators over the functions for file i/o to avoid redundancy
 
+V3.5:
+Solving the highScore.txt not over-writing previous highScore bug
 ----
 Ideas to work on:
-[] The current highScore files are not overwriting the previous scores 
+[.] The current highScore files are not overwriting the previous scores 
     but are appending to the previous entry. Sort it.
-[] Error Handling
-    [] While checking user input at each guess
-[] User generated Range
-[] UI of some kind if possible
+[ ] Error Handling
+    [ ] While checking user input at each guess
+[ ] User generated Range
+[ ] UI of some kind if possible

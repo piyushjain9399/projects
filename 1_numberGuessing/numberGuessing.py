@@ -46,6 +46,7 @@ from sys import platform
 # Defining Global Variables: (The file handler)
 
 file1 = "FileHandlerGlobalVar"
+fileName = "FileNameForHighScoreFile"
 
 # 1. Generating random number
 def generateRandom(choice):
@@ -93,6 +94,8 @@ def checkHighScoreFile(choice):
         path += "1To100.txt"
     else:
         path += "1To200.txt"
+    global fileName
+    fileName = path
     isFile = os.path.isfile(path)
     return isFile
 
@@ -120,9 +123,9 @@ def fileIO(func):
     def inner(*args):
         global file1
         if(args[0] == 1):
-            file1 = open(r"highScore1To100.txt","a+")
+            file1 = open(r"highScore1To100.txt","r+")
         else:
-            file1 = open(r"highScore1To200.txt","a+")
+            file1 = open(r"highScore1To200.txt","r+")
         return func(*args)
     return inner
 
@@ -144,11 +147,23 @@ def updateHighScore(choice, guessReqd):
     """
     global file1
     file1.seek(0)
+    file1.truncate()
     file1.write(str(guessReqd))
     print(f"Congratulations! You have set up a new highScore with {guessReqd} guesses.")
 
-# Defining the main function and writing the call for it.
+# V3.5 Changes: Solving the highScore not overwriting bug.
+def createHighScoreFile(guessReqd):
+    """
+    Function to create a highScore.txt file if one doesn't exist.
+    """
+    global fileName
+    global file1
+    file1 = open(fileName, "w")
+    file1.write(str(guessReqd))
+    print(f"Congratulations! You have a high score with {guessReqd} guesses.\n") 
 
+
+# Defining the main function and writing the call for it.
 
 def main():
     """
@@ -182,7 +197,8 @@ def main():
         else:
             updateHighScore(choice, guessReqd)
     else:
-        updateHighScore(choice, guessReqd)
+        #updateHighScore(choice, guessReqd)
+        createHighScoreFile(guessReqd)
 
 
 if __name__ == "__main__":
