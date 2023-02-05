@@ -1,5 +1,7 @@
 *Post Tax Investment Returns Calculator*
 
+Note: Please use the InvestmentReturnsCalcOOP.cpp file.
+
 Given the 
     1. amount of investment, 
     2. rate of interest and 
